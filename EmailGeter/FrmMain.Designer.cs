@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.xbePSTFile = new DevExpress.XtraEditors.ButtonEdit();
             this.xsbAnalysis = new DevExpress.XtraEditors.SimpleButton();
@@ -256,6 +257,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 419);
             this.Controls.Add(this.layoutControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.Text = "Email Analyzer";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
