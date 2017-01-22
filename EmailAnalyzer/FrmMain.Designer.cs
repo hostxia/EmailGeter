@@ -90,7 +90,7 @@
             // 
             // xsbAnalysis
             // 
-            this.xsbAnalysis.Location = new System.Drawing.Point(507, 385);
+            this.xsbAnalysis.Location = new System.Drawing.Point(507, 60);
             this.xsbAnalysis.Name = "xsbAnalysis";
             this.xsbAnalysis.Size = new System.Drawing.Size(87, 22);
             this.xsbAnalysis.StyleController = this.layoutControl1;
@@ -100,7 +100,7 @@
             // 
             // xgridResult
             // 
-            this.xgridResult.Location = new System.Drawing.Point(102, 60);
+            this.xgridResult.Location = new System.Drawing.Point(102, 86);
             this.xgridResult.MainView = this.xgridViewResult;
             this.xgridResult.Name = "xgridResult";
             this.xgridResult.Size = new System.Drawing.Size(492, 321);
@@ -188,9 +188,9 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem2,
+            this.layoutControlItem4,
             this.layoutControlItem3,
-            this.emptySpaceItem1,
-            this.layoutControlItem4});
+            this.emptySpaceItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(606, 419);
@@ -208,7 +208,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.xgridResult;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 74);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(586, 325);
             this.layoutControlItem2.Text = "Result:";
@@ -217,7 +217,7 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.xsbAnalysis;
-            this.layoutControlItem3.Location = new System.Drawing.Point(495, 373);
+            this.layoutControlItem3.Location = new System.Drawing.Point(495, 48);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(91, 26);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(91, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -229,7 +229,7 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 373);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 48);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(495, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);

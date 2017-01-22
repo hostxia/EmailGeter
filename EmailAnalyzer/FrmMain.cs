@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Aspose.Email.Mail;
 using Aspose.Email.Outlook.Pst;
+using DevExpress.XtraEditors;
 
 namespace EmailAnalyzer
 {
@@ -34,37 +35,52 @@ namespace EmailAnalyzer
 
         private void xsbAnalysis_Click(object sender, EventArgs e)
         {
-            listEmail.Clear();
-            splashScreenManager.ShowWaitForm();
-            if (Directory.Exists(xbeDirectory.Text))
+            try
             {
-                splashScreenManager.SetWaitFormDescription("Loading email files...");
-                var listEmailFiles = Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.msg", SearchOption.AllDirectories).ToList();
-                splashScreenManager.SetWaitFormDescription("Analysing emails...");
-                listEmailFiles.ForEach(f =>
+                splashScreenManager.ShowWaitForm();
+                listEmail.Clear();
+                if (Directory.Exists(xbeDirectory.Text))
                 {
-                    var mailMessage = MailMessage.Load(f);
-                    GetEmailInfo(mailMessage);
-                });
+                    splashScreenManager.SetWaitFormDescription("Loading email files...");
+                    var listEmailFiles =
+                        Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.msg", SearchOption.AllDirectories)
+                            .ToList();
+                    splashScreenManager.SetWaitFormDescription("Analysing emails...");
+                    listEmailFiles.ForEach(f =>
+                    {
+                        var mailMessage = MailMessage.Load(f);
+                        GetEmailInfo(mailMessage);
+                    });
 
-            }
-            else if (File.Exists(xbePSTFile.Text))
-            {
-                splashScreenManager.SetWaitFormDescription("Loading email files...");
-                var personalStorage = PersonalStorage.FromFile(xbePSTFile.Text);
-                var listMessageInfo = new List<MessageInfo>();
-                GetMessageInfo(ref listMessageInfo, personalStorage.RootFolder);
-                splashScreenManager.SetWaitFormDescription("Analysing emails...");
-                listMessageInfo.ForEach(m =>
+                }
+                else if (File.Exists(xbePSTFile.Text))
                 {
-                    var mailMessage = personalStorage.ExtractMessage(m).ToMailMessage(new Aspose.Email.Outlook.MailConversionOptions());
-                    GetEmailInfo(mailMessage);
-                });
-                personalStorage.Dispose();
+                    splashScreenManager.SetWaitFormDescription("Loading email files...");
+                    var personalStorage = PersonalStorage.FromFile(xbePSTFile.Text);
+                    var listMessageInfo = new List<MessageInfo>();
+                    GetMessageInfo(ref listMessageInfo, personalStorage.RootFolder);
+                    splashScreenManager.SetWaitFormDescription("Analysing emails...");
+                    listMessageInfo.ForEach(m =>
+                    {
+                        var mailMessage =
+                            personalStorage.ExtractMessage(m)
+                                .ToMailMessage(new Aspose.Email.Outlook.MailConversionOptions());
+                        GetEmailInfo(mailMessage);
+                    });
+                    personalStorage.Dispose();
+                }
+                xgridViewResult.RefreshData();
+                xgridViewResult.BestFitColumns();
             }
-            xgridViewResult.RefreshData();
-            xgridViewResult.BestFitColumns();
-            splashScreenManager.CloseWaitForm();
+            catch (Exception exception)
+            {
+                XtraMessageBox.Show(exception.Message + "\r\n" + exception.StackTrace);
+            }
+            finally
+            {
+                splashScreenManager.CloseWaitForm();
+            }
+
         }
 
         private void GetEmailInfo(MailMessage mailMessage)
