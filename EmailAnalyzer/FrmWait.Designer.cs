@@ -1,4 +1,4 @@
-﻿namespace EmailGeter
+﻿namespace EmailAnalyzer
 {
     partial class FrmWait
     {

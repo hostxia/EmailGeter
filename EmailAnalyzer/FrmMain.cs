@@ -1,15 +1,14 @@
-﻿using Aspose.Email.Mail;
-using Aspose.Email.Outlook.Pst;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Aspose.Email.Mail;
+using Aspose.Email.Outlook.Pst;
 
-namespace EmailGeter
+namespace EmailAnalyzer
 {
     public partial class FrmMain : Form
     {

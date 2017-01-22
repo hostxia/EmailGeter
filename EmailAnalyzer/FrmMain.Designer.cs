@@ -1,4 +1,4 @@
-﻿namespace EmailGeter
+﻿namespace EmailAnalyzer
 {
     partial class FrmMain
     {
@@ -47,7 +47,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::EmailGeter.FrmWait), true, true);
+            this.splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::EmailAnalyzer.FrmWait), true, true);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
