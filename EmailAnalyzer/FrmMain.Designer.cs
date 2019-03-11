@@ -30,27 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.xbePSTFile = new DevExpress.XtraEditors.ButtonEdit();
             this.xsbAnalysis = new DevExpress.XtraEditors.SimpleButton();
             this.xgridResult = new DevExpress.XtraGrid.GridControl();
             this.xgridViewResult = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xbeDirectory = new DevExpress.XtraEditors.ButtonEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::EmailAnalyzer.FrmWait), true, true);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xbePSTFile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xgridResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xgridViewResult)).BeginInit();
@@ -58,13 +55,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.radioGroup1);
             this.layoutControl1.Controls.Add(this.xbePSTFile);
             this.layoutControl1.Controls.Add(this.xsbAnalysis);
             this.layoutControl1.Controls.Add(this.xgridResult);
@@ -73,24 +71,36 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(606, 419);
+            this.layoutControl1.Size = new System.Drawing.Size(836, 557);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // radioGroup1
+            // 
+            this.radioGroup1.EditValue = "B";
+            this.radioGroup1.Location = new System.Drawing.Point(78, 60);
+            this.radioGroup1.Name = "radioGroup1";
+            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("B", "Bounce mail info."),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Analysis mail info for PMD")});
+            this.radioGroup1.Size = new System.Drawing.Size(655, 25);
+            this.radioGroup1.StyleController = this.layoutControl1;
+            this.radioGroup1.TabIndex = 1;
+            // 
             // xbePSTFile
             // 
-            this.xbePSTFile.Location = new System.Drawing.Point(102, 36);
+            this.xbePSTFile.Location = new System.Drawing.Point(78, 36);
             this.xbePSTFile.Name = "xbePSTFile";
             this.xbePSTFile.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.xbePSTFile.Size = new System.Drawing.Size(492, 20);
+            this.xbePSTFile.Size = new System.Drawing.Size(746, 20);
             this.xbePSTFile.StyleController = this.layoutControl1;
             this.xbePSTFile.TabIndex = 4;
             this.xbePSTFile.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.xbePSTFile_ButtonClick);
             // 
             // xsbAnalysis
             // 
-            this.xsbAnalysis.Location = new System.Drawing.Point(507, 60);
+            this.xsbAnalysis.Location = new System.Drawing.Point(737, 60);
             this.xsbAnalysis.Name = "xsbAnalysis";
             this.xsbAnalysis.Size = new System.Drawing.Size(87, 22);
             this.xsbAnalysis.StyleController = this.layoutControl1;
@@ -100,83 +110,32 @@
             // 
             // xgridResult
             // 
-            this.xgridResult.Location = new System.Drawing.Point(102, 86);
+            this.xgridResult.Location = new System.Drawing.Point(78, 89);
             this.xgridResult.MainView = this.xgridViewResult;
             this.xgridResult.Name = "xgridResult";
-            this.xgridResult.Size = new System.Drawing.Size(492, 321);
+            this.xgridResult.Size = new System.Drawing.Size(746, 456);
             this.xgridResult.TabIndex = 1;
             this.xgridResult.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.xgridViewResult});
             // 
             // xgridViewResult
             // 
-            this.xgridViewResult.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn5,
-            this.gridColumn6,
-            this.gridColumn2});
             this.xgridViewResult.GridControl = this.xgridResult;
             this.xgridViewResult.Name = "xgridViewResult";
             this.xgridViewResult.OptionsBehavior.Editable = false;
             this.xgridViewResult.OptionsSelection.MultiSelect = true;
             this.xgridViewResult.OptionsView.ColumnAutoWidth = false;
+            this.xgridViewResult.OptionsView.ShowAutoFilterRow = true;
             this.xgridViewResult.OptionsView.ShowFooter = true;
             this.xgridViewResult.OptionsView.ShowGroupPanel = false;
             // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Our Ref.";
-            this.gridColumn3.FieldName = "CaseNo";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "FileName", "{0}")});
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 0;
-            this.gridColumn3.Width = 126;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Recipient";
-            this.gridColumn4.FieldName = "Recipient";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 1;
-            this.gridColumn4.Width = 168;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Address";
-            this.gridColumn5.FieldName = "Address";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 2;
-            this.gridColumn5.Width = 130;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "Bcc";
-            this.gridColumn6.FieldName = "Bcc";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 3;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Email Subject";
-            this.gridColumn2.FieldName = "Subject";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 4;
-            this.gridColumn2.Width = 154;
-            // 
             // xbeDirectory
             // 
-            this.xbeDirectory.Location = new System.Drawing.Point(102, 12);
+            this.xbeDirectory.Location = new System.Drawing.Point(78, 12);
             this.xbeDirectory.Name = "xbeDirectory";
             this.xbeDirectory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.xbeDirectory.Size = new System.Drawing.Size(492, 20);
+            this.xbeDirectory.Size = new System.Drawing.Size(746, 20);
             this.xbeDirectory.StyleController = this.layoutControl1;
             this.xbeDirectory.TabIndex = 1;
             this.xbeDirectory.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.xbeDirectory_ButtonClick);
@@ -190,10 +149,9 @@
             this.layoutControlItem2,
             this.layoutControlItem4,
             this.layoutControlItem3,
-            this.emptySpaceItem1});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem5});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(606, 419);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(836, 557);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -201,47 +159,48 @@
             this.layoutControlItem1.Control = this.xbeDirectory;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(586, 24);
-            this.layoutControlItem1.Text = "MSG files folder:";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(87, 14);
+            this.layoutControlItem1.Size = new System.Drawing.Size(816, 24);
+            this.layoutControlItem1.Text = "MSG folder:";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(63, 14);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.xgridResult;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 74);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 77);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(586, 325);
+            this.layoutControlItem2.Size = new System.Drawing.Size(816, 460);
             this.layoutControlItem2.Text = "Result:";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(87, 14);
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.xsbAnalysis;
-            this.layoutControlItem3.Location = new System.Drawing.Point(495, 48);
-            this.layoutControlItem3.MaxSize = new System.Drawing.Size(91, 26);
-            this.layoutControlItem3.MinSize = new System.Drawing.Size(91, 26);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(91, 26);
-            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 48);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(495, 26);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(63, 14);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.xbePSTFile;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(586, 24);
-            this.layoutControlItem4.Text = "PST file\'s path:";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(87, 14);
+            this.layoutControlItem4.Size = new System.Drawing.Size(816, 24);
+            this.layoutControlItem4.Text = "PST file:";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(63, 14);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.xsbAnalysis;
+            this.layoutControlItem3.Location = new System.Drawing.Point(725, 48);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(91, 26);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(91, 26);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(91, 29);
+            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.radioGroup1;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(725, 29);
+            this.layoutControlItem5.Text = "Rule:";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(63, 14);
             // 
             // splashScreenManager
             // 
@@ -255,13 +214,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 419);
+            this.ClientSize = new System.Drawing.Size(836, 557);
             this.Controls.Add(this.layoutControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.Text = "Email Analyzer";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xbePSTFile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xgridResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xgridViewResult)).EndInit();
@@ -269,9 +229,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -285,19 +245,15 @@
         private DevExpress.XtraGrid.GridControl xgridResult;
         private DevExpress.XtraGrid.Views.Grid.GridView xgridViewResult;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.SimpleButton xsbAnalysis;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.ButtonEdit xbePSTFile;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private DevExpress.XtraEditors.RadioGroup radioGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }
 

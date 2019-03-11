@@ -1,44 +1,32 @@
-﻿using System;
+﻿using Aspose.Email.Mail;
+using Aspose.Email.Outlook.Pst;
+using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook.Pst;
-using DevExpress.XtraEditors;
 
 namespace EmailAnalyzer
 {
     public partial class FrmMain : Form
     {
-        List<ExpandoObject> listEmail;
+        private List<ExpandoObject> listEmail;
         public FrmMain()
         {
             InitializeComponent();
-            listEmail = new List<ExpandoObject>();
-
-            dynamic expEmpty = new ExpandoObject();//构造一个空对象，使动态对象有属性，否则在绑定列表后列表各列显示为空白。
-            expEmpty.CaseNo = string.Empty;
-            expEmpty.Subject = string.Empty;
-            expEmpty.Recipient = string.Empty;
-            expEmpty.Address = string.Empty;
-            expEmpty.Bcc = false;
-            listEmail.Add(expEmpty);
-
-            xgridResult.DataSource = listEmail;
-
-            listEmail.Clear();
-            xgridViewResult.RefreshData();
         }
 
         private void xsbAnalysis_Click(object sender, EventArgs e)
         {
+
             try
             {
                 splashScreenManager.ShowWaitForm();
-                listEmail.Clear();
+                listEmail = new List<ExpandoObject>();
+                xgridResult.DataSource = null;
                 if (Directory.Exists(xbeDirectory.Text))
                 {
                     splashScreenManager.SetWaitFormDescription("Loading email files...");
@@ -49,9 +37,11 @@ namespace EmailAnalyzer
                     listEmailFiles.ForEach(f =>
                     {
                         var mailMessage = MailMessage.Load(f);
-                        GetEmailInfo(mailMessage);
+                        if (radioGroup1.SelectedIndex == 1)
+                            AnalysisMailForPMD(mailMessage);
+                        else
+                            AnalysisBounceMail(mailMessage);
                     });
-
                 }
                 else if (File.Exists(xbePSTFile.Text))
                 {
@@ -65,10 +55,15 @@ namespace EmailAnalyzer
                         var mailMessage =
                             personalStorage.ExtractMessage(m)
                                 .ToMailMessage(new Aspose.Email.Outlook.MailConversionOptions());
-                        GetEmailInfo(mailMessage);
+                        if (radioGroup1.SelectedIndex == 1)
+                            AnalysisMailForPMD(mailMessage);
+                        else
+                            AnalysisBounceMail(mailMessage);
                     });
                     personalStorage.Dispose();
                 }
+
+                xgridResult.DataSource = listEmail;
                 xgridViewResult.RefreshData();
                 xgridViewResult.BestFitColumns();
             }
@@ -81,9 +76,31 @@ namespace EmailAnalyzer
                 splashScreenManager.CloseWaitForm();
             }
 
+
         }
 
-        private void GetEmailInfo(MailMessage mailMessage)
+        private void AnalysisBounceMail(MailMessage mailMessage)
+        {
+            mailMessage.ToList().ForEach(a =>
+            {
+                Regex.Matches(mailMessage.Body,
+                        @"[\w!#$%&'*+/?^_`{|}~-]+(?:\.[\w!#$%&'*+/?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?",
+                        RegexOptions.Multiline).Cast<Match>().Where(m => m.Success).Select(m => m.Value).Distinct()
+                    .ToList()
+                    .ForEach(
+                        e =>
+                        {
+                            dynamic emailInfo = new ExpandoObject();
+                            emailInfo.MsgEmailAddress = e;
+                            emailInfo.Date = mailMessage.Date;
+                            emailInfo.Subject = mailMessage.Subject;
+                            emailInfo.From = mailMessage.From.Address;
+                            listEmail.Add(emailInfo);
+                        });
+            });
+        }
+
+        private void AnalysisMailForPMD(MailMessage mailMessage)
         {
             var sCaseNo = GetOurRefFromSubject(mailMessage.Subject);
             //if (string.IsNullOrWhiteSpace(sCaseNo)) return;
