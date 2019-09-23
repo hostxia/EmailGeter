@@ -1,6 +1,4 @@
-﻿using Aspose.Email.Mail;
-using Aspose.Email.Outlook.Pst;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -8,6 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Aspose.Email;
+using Aspose.Email.Mapi;
+using Aspose.Email.Storage.Pst;
 
 namespace EmailAnalyzer
 {
@@ -17,6 +18,7 @@ namespace EmailAnalyzer
         public FrmMain()
         {
             InitializeComponent();
+            LicenseHelper.ModifyInMemory.ActivateMemoryPatching();
         }
 
         private void xsbAnalysis_Click(object sender, EventArgs e)
@@ -52,13 +54,21 @@ namespace EmailAnalyzer
                     splashScreenManager.SetWaitFormDescription("Analysing emails...");
                     listMessageInfo.ForEach(m =>
                     {
-                        var mailMessage =
-                            personalStorage.ExtractMessage(m)
-                                .ToMailMessage(new Aspose.Email.Outlook.MailConversionOptions());
-                        if (radioGroup1.SelectedIndex == 1)
-                            AnalysisMailForPMD(mailMessage);
-                        else
-                            AnalysisBounceMail(mailMessage);
+                        try
+                        {
+                            var mailMessage =
+                                personalStorage.ExtractMessage(m)
+                                    .ToMailMessage(new MailConversionOptions());
+                            if (radioGroup1.SelectedIndex == 1)
+                                AnalysisMailForPMD(mailMessage);
+                            else
+                                AnalysisBounceMail(mailMessage);
+                        }
+                        catch (Exception exception)
+                        {
+                            Console.WriteLine(exception);
+                        }
+
                     });
                     personalStorage.Dispose();
                 }

@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailAnalyzer", "EmailAnalyzer\EmailAnalyzer.csproj", "{6F807620-8ED1-46CE-A720-D67280395FB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Dll", "_Dll", "{AF296D2F-8E12-487F-82AB-4F3C029F5395}"
+	ProjectSection(SolutionItems) = preProject
+		_Dll\Aspose.Email.dll = _Dll\Aspose.Email.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {433A7AC9-F290-4D9A-B682-3115B9128E10}
 	EndGlobalSection
 EndGlobal
